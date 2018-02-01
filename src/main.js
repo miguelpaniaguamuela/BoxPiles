@@ -2,22 +2,19 @@ import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
 
-import MenuState from './states/Menu'
-import PreloadState from './states/Preload'
-import PlayState from './states/Game'
-
-import config from './config'
+import BootGame from './states/BootGame'
+import PreloadGame from './states/PreloadGame'
+import PlayGame from './states/PlayGame'
 
 class Game extends Phaser.Game {
   constructor () {
-    super(window.innerWidth, window.innerHeight, Phaser.AUTO);
-    this.scaleFactor = {x: window.innerWidth/1920, y:window.innerHeight/1080}; 
-    this.state.add('Preload', PreloadState, false)
-    this.state.add('Menu', MenuState, false)
-    this.state.add('Game', PlayState, false)
+    super(window.innerWidth, window.innerHeight, Phaser.AUTO)
+    this.scaleFactor = {x: window.innerWidth / 1920, y: window.innerHeight / 1080}
+    this.state.add('BootGame', BootGame, false)
+    this.state.add('PreloadGame', PreloadGame, false)
+    this.state.add('PlayGame', PlayGame, false)
 
-    this.state.start('Preload')
+    this.state.start('BootGame')
   }
-
 }
 window.game = new Game()
