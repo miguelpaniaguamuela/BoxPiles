@@ -1,31 +1,21 @@
 import Phaser from 'phaser'
 
 export default class Crate extends Phaser.Sprite {
-  constructor ({game, x, y, asset}) {
+  constructor ({game, x, y, asset, collisionGroup}) {
     super(game, x, y, asset)
+    this.scale.setTo(this.game.scaleFactor.x, this.game.scaleFactor.x)
     this.game = game
+    this.collisionGroup = collisionGroup
     this.game.physics.p2.enable(this)
+    this.body.setCollisionGroup(this.collisionGroup)
+    this.body.collides(this.collisionGroup)
   }
 
   update () {
 
   }
 
-  setHorizontalSpeed (angle) {
-    this.radAngle = Phaser.Math.degToRad(angle)
-    this.speed = Math.cos(this.radAngle) * -600
-  }
-
-  checkDestory () {
-    if (this.body.position.x < -200) {
-      this.kill()
-      this.destroy()
-    } else {
-      this.applySpeed()
-    }
-  }
-
-  applySpeed () {
-    this.body.velocity.x = this.speed * this.game.scaleFactor.x
+  setPosition (x) {
+    this.x = x
   }
 }
