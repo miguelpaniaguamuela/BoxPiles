@@ -3,6 +3,7 @@ import Crate from '../entities/Crate'
 import Ground from '../entities/Ground'
 import LevelLoader from '../levels/LevelLoader'
 import Cannon from '../entities/Cannon'
+import Bullet from '../entities/Bullet'
 import PowerBar from '../HUD/PowerBar'
 
 export default class extends Phaser.State {
@@ -94,6 +95,13 @@ export default class extends Phaser.State {
     this.game.add.existing(this.game.powerBar)
   }
 
+  createBullet () {
+    this.game.bullet = new Bullet({
+      game: this.game, x: 100, y: 100, asset: 'bullet', collisionGroup: this.collisionGroup
+    })
+    this.game.add.existing(this.game.bullet)
+  }
+
   fire () {
     if (this.firstMouseDown) {
       this.firstMouseDown = false
@@ -103,6 +111,7 @@ export default class extends Phaser.State {
     } else {
       this.firstMouseDown = true
       this.game.powerBar.stopIncreasing()
+      this.createBullet()
     }
   }
 }

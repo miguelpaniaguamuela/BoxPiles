@@ -11,6 +11,7 @@ export default class extends Phaser.State {
     this.game.load.image('borderPowerBar', 'assets/sprites/powerBar.png')
     this.game.load.image('powerBar', 'assets/sprites/powerBarProgression.png')
     this.game.load.image('cannon', 'assets/sprites/cannon.png')
+    this.game.load.image('bullet', 'assets/sprites/bullet.png')
     this.game.load.image('title', 'assets/sprites/title.png')
     this.game.load.image('tap', 'assets/sprites/tap.png')
     this.game.load.audio('hit01', ['assets/sounds/hit01.mp3', 'assets/sounds/hit01.ogg'])
@@ -20,7 +21,7 @@ export default class extends Phaser.State {
     this.game.load.audio('gameover', ['assets/sounds/gameover.mp3', 'assets/sounds/gameover.ogg'])
     this.game.load.bitmapFont('font', 'assets/fonts/font.png', 'assets/fonts/font.fnt')
     this.game.load.bitmapFont('smallfont', 'assets/fonts/smallfont.png', 'assets/fonts/smallfont.fnt')
-    this.game.load.text('level_1', 'src/levels/level_1.txt')
+    this.game.load.text('level_1', 'assets/levels/level_1.txt')
   }
 
   create () {
@@ -29,7 +30,7 @@ export default class extends Phaser.State {
       CRATEHEIGHT: 0
     }
     this.game.gameOptions = {
-      gravity: 2000,
+      gravity: 1000,
       localStorageName: 'stackthecratesgame'
     }
 
