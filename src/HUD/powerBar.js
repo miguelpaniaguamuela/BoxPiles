@@ -26,7 +26,6 @@ export default class PowerBar extends Phaser.Sprite {
       this.powerIncreased = this.powerIncreased * -1
     }
   }
-  
 
   drawBorder () {
     this.powerBar = this.game.add.sprite(this.x - this.width / 2, this.y - this.height / 2, 'powerBar')

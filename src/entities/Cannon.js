@@ -7,7 +7,7 @@ export default class Cannon extends Phaser.Sprite {
     this.game = game
     this.collisionGroup = collisionGroup
     this.game.physics.arcade.enable(this)
-    this.anchor.setTo(0.5)
+    this.anchor.setTo(0.2, 0.7)
     this.rotateDirection = 0.75
     this.rotationMove = false
     this.drawWheels()
@@ -19,7 +19,6 @@ export default class Cannon extends Phaser.Sprite {
 
   drawWheels () {
     var wheels = this.game.add.sprite(this.x - this.width / 2, this.y - this.height / 2, 'cannonWheels')
-    this.anchor.setTo(0.5)
     wheels.scale.setTo(this.game.scaleFactor.x, this.game.scaleFactor.x)
   }
 
