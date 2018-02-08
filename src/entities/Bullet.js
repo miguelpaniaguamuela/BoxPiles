@@ -7,11 +7,11 @@ export default class Bullet extends Phaser.Sprite {
     this.game = game
     this.collisionGroup = collisionGroup
     this.power = power
-    this.lastSoundPlayed = Date.now()
     this.cannonAngle = Phaser.Math.degToRad(angle)
+
+    this.lastSoundPlayed = Date.now()
     this.game.physics.p2.enable(this)
     this.body.collideWorldBounds = true
-    //console.log(this.game.bulletMaterial)
     this.body.setMaterial(this.game.normalMaterial)
     this.body.setCollisionGroup(this.collisionGroup)
     this.body.collides(this.collisionGroup, function (b, b2) {
@@ -25,6 +25,7 @@ export default class Bullet extends Phaser.Sprite {
     this.body.force.x = Math.cos(this.cannonAngle) * -this.power * 50000 * this.game.scaleFactor.x
     this.body.force.y = Math.sin(-this.cannonAngle) * this.power * 50000 * this.game.scaleFactor.y
     this.body.mass = 25
+
     this.stopRotation = false
     this.destroyed = false
   }
